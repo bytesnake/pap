@@ -162,15 +162,6 @@ fn main() {
         .map(|x| x.path().parent().unwrap().to_owned())
         .next().expect("Could not find any workspace in subdirectories");
 
-    // You can see how many times a particular flag or argument occurred
-    // Note, only flags can have multiple occurrences
-    match matches.occurrences_of("v") {
-        0 => println!("Verbose mode is off"),
-        1 => println!("Verbose mode is kind of on"),
-        2 => println!("Verbose mode is on"),
-        3 | _ => println!("Don't be crazy"),
-    }
-    
     if let Some(ref matches) = matches.subcommand_matches("add") {
         let path = matches.value_of("PATH")
             .map(|x| Path::new(x));
